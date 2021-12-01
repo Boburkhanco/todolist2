@@ -4,23 +4,12 @@ var button = document.getElementById('Button')
 var input = document.getElementById('Input')
 var remove = document.getElementById('remove')
 var edit = document.getElementById('edit')
-var listArr = [
-    {
-      id: 1,
-      todo: 'Kitob oqish',
-      time: '29-11-2021 11:41',
-      isDone: false
-    },
-    {
-      id: 2,
-      todo: 'Mashinani yuvish',
-      time: '29-11-2021 11:41',
-      isDone: false
-    },
-]
+var listArr = new Array()
 
 function createToDoList() {
     if(input.value == '') {
+        return
+    } else if(input.value.length < 4) {
         return
     } else {
         var list = document.createElement('li')
@@ -42,7 +31,6 @@ function createToDoList() {
         list.appendChild(checkBox)
         list.appendChild(taskInfo)
         list.appendChild(removeBtn)
-        list.appendChild(editBtn)
         input.value = ''
         input.focus()
     }
@@ -67,7 +55,6 @@ tasksUl.addEventListener('click' , e => {
 tasksUl.addEventListener('click', e => {
     var targetedElement = e.target
     var task = e.srcElement.parentElement
-    console.log(e.srcElement.parentElement);
     if (targetedElement.matches('button')) {
         task.remove()
         }  
